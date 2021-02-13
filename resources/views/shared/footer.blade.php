@@ -20,8 +20,17 @@
     </p>
     <div>
       <ul class='user-management'>
-        <li><a href="../login.php" class="login btn btn-primary">ログイン</a></li>
-        <li><a href="../sign-up.php" class="sign-up btn btn-success">新規登録</a></li>
+        @if (Route::has('login'))
+            @auth
+                <a href="{{ url('/home') }}">Home</a>
+            @else
+                <a href="{{ route('login') }}" class="login btn btn-primary">ログイン</a>
+
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="sign-up btn btn-success">新規登録</a>
+                @endif
+            @endauth
+        @endif
       </ul>
     </div>
   <?php endif; ?>

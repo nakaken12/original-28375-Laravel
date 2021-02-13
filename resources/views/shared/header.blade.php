@@ -78,13 +78,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['time'])) {
     <input type="submit" name="submit" value="検索">
   </form>
   <ul class='user-management'>
-    <?php if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()): ?>
-      <li><a href="../user-page.php?id=<?php print($id); ?>" class="user-nickname"><?php print(htmlspecialchars($member['nickname'])); ?></a></li>
-      <li><a href="../logout.php" class="logout btn btn-danger">ログアウト</a></li>
-    <?php else: ?>
-      <li><a href="../login.php" class="login btn btn-primary">ログイン</a></li>
-      <li><a href="../sign-up.php" class="sign-up btn btn-success">新規登録</a></li>
-    <?php endif; ?>
+    @if (Route::has('login'))
+        @auth
+            <a href="{{ url('/home') }}">Home</a>
+        @else
+            <a href="{{ route('login') }}" class="login btn btn-primary">ログイン</a>
+
+            @if (Route::has('register'))
+                <a href="{{ route('register') }}" class="sign-up btn btn-success">新規登録</a>
+            @endif
+        @endauth
+    @endif
   </ul>
 </div>
 <!-- 上部バー部分 -->
