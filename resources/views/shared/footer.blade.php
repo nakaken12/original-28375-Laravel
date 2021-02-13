@@ -22,7 +22,7 @@
       <ul class='user-management'>
         @if (Route::has('login'))
             @auth
-                <a href="{{ url('/home') }}">Home</a>
+                <a href="{{ url('/home') }}" class="user-nickname">Home</a>
             @else
                 <a href="{{ route('login') }}" class="login btn btn-primary">ログイン</a>
 
