@@ -13,7 +13,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['time'])) {
 
 ?>
 
-<script type="text/javascript" src="../js/genre.js"></script>
+<script src="{{ mix('js/genre.js') }}"></script>
 
 <div class='header'>
   <a href= "/", class="header-left">トップページ</a>
