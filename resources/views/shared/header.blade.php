@@ -16,7 +16,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['time'])) {
 <script src="{{ mix('js/genre.js') }}"></script>
 
 <div class='header'>
-  <a href= "/", class="header-left">トップページ</a>
+  <a href= "/index", class="header-left">トップページ</a>
 
   <div id="parents", class="parents">
     <a href="#", class="header-left-genre">ジャンル</a>
