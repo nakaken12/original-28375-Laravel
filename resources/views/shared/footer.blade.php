@@ -1,5 +1,5 @@
 <!-- 広告部分 -->
-<?php session_start(); ?>
+<?php //session_start(); ?>
 
 <div class='footer-title-contents'>
   <h2 class='footer-service-title'>

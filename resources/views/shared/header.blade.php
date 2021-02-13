@@ -1,6 +1,6 @@
 <!-- 上部バー部分 -->
 <?php 
-session_start(); 
+/*session_start(); 
 require('dbconnect.php');
 
 if (isset($_SESSION['id']) && isset($_SESSION['time'])) {
@@ -9,7 +9,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['time'])) {
   $login = $db->prepare('SELECT * FROM users WHERE id=?');
   $login->execute(array($id));
   $member = $login->fetch();
-}
+}*/
 
 ?>
 
