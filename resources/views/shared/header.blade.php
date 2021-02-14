@@ -72,7 +72,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['time'])) {
     </ul>
   </div>
 
-  <a href="post.php", class="header-left">投稿する</a>
+  <a href="{{ url('/post') }}" class="header-left">投稿する</a>
   <form action="search.php" method="get" class="search-form">
     <input type="search" name="search" class="input-box" placeholder="タイトル名から探す">
     <input type="submit" name="submit" value="検索">
