@@ -23,6 +23,10 @@ Route::get('/post', function () {
     return view('post');
 });
 
+Route::group(['prefix' => 'post', 'middleware' => 'auth'], function(){
+    Route::get('create', 'PostsController@create');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
