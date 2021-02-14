@@ -34,7 +34,8 @@
     <?php //endif; ?>
     <!-- エラー文 -->
 
-    <form action="" method="post" class="new_posts">
+    <form action="{{ route('post.store') }}" method="post" class="new_posts">
+    @csrf
       <!-- タイトル名 -->
       <div class="weight-bold-text">
         タイトル名

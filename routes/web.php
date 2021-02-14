@@ -19,12 +19,9 @@ Route::get('/', function () {
     return view('post.index');
 });
 
-Route::get('/post', function () {
-    return view('post');
-});
-
 Route::group(['prefix' => 'post', 'middleware' => 'auth'], function(){
-    Route::get('create', 'PostsController@create');
+    Route::get('create', 'PostsController@create')->name('post.create');
+    Route::post('store', 'PostsController@store')->name('post.store');
 });
 
 Auth::routes();
