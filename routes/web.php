@@ -16,7 +16,7 @@
 // });
 
 Route::get('/', function () {
-    return view('index');
+    return view('post.index');
 });
 
 Route::get('/post', function () {
