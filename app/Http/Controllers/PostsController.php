@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
+use App\Models\Post;
+
 class PostsController extends Controller
 {
     /**
@@ -35,7 +39,17 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new Post;
+
+        $post->title = $request->input('title');
+        $post->genre = $request->input('genre');
+        $post->spoiler = $request->input('spoiler');
+        $post->content = $request->input('content');
+        $post->user_id = Auth::id();
+
+        $post->save();
+
+        return redirect('/');
     }
 
     /**

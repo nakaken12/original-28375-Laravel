@@ -83,8 +83,8 @@
           ネタバレ
           <span class="indispensable">必須</span>
         </div>
-        <input type="radio" name="spoiler" value="true">ネタバレあり
-        <input type="radio" name="spoiler" value="false">ネタバレなし
+        <input type="radio" name="spoiler" value="0">ネタバレあり
+        <input type="radio" name="spoiler" value="1">ネタバレなし
       </div>    
       <!-- ネタバレ -->
 
