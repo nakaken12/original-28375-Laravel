@@ -81,12 +81,24 @@
             @endif
             <!-- ネタバレ -->
             
-
               <a href="{{ route('post.edit', ['id' => $post->id ])}}" class="btn btn-warning">編集</a>
-              <a href="#" class="btn btn-danger">削除</a>
+              <form method="post" action="{{ route('post.destroy', ['id' => $post->id ])}}" id="delete_{{ $post->id }}">
+                @csrf
+                <a href="#" class="btn btn-danger" data-id="{{ $post->id }}" onclick="deletePost(this);">削除</a>
+              </form>
 
           </div>
         </li>
+
+      <script>
+        function deletePost(e) {
+          'use strict';
+          if (confirm('本当に削除してよろしいですか？')) {
+            document.getElementById('delete_' + e.dataset.id).submit();
+          }
+        }
+      </script>
+
       @endforeach
     <!-- 投稿のインスタンス変数になにか入っている場合、中身を展開 -->
 
