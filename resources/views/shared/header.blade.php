@@ -1,17 +1,4 @@
 <!-- 上部バー部分 -->
-<?php 
-/*session_start(); 
-require('dbconnect.php');
-
-if (isset($_SESSION['id']) && isset($_SESSION['time'])) {
-  $id = $_SESSION['id'];
-
-  $login = $db->prepare('SELECT * FROM users WHERE id=?');
-  $login->execute(array($id));
-  $member = $login->fetch();
-}*/
-
-?>
 
 <script src="{{ mix('js/genre.js') }}"></script>
 
