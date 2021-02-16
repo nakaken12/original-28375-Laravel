@@ -165,6 +165,14 @@ summary {
   padding: 1vh 0;
 }
 
+.edit-delete-btn {
+  display: flex;
+}
+
+.edit-btn {
+  margin-right: 5px;
+}
+
 .post-dummy {
   display: flex;
   flex-direction: column;
