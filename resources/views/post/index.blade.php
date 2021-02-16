@@ -24,7 +24,7 @@
   </p>
   <div class='store-btn'>
     <a href="#"><img src="https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps" alt="App Store" class="apple-btn"></a>
-    <a href="#"><img src="images/dl-android.png" alt="Google Play" class="google-btn"></a>
+    <a href="#"><img src="../images/dl-android.png" alt="Google Play" class="google-btn"></a>
   </div>
 </div>
 <!-- 広告部分 -->
@@ -47,64 +47,59 @@
   <ul class='post-lists'>
 
     <!-- 投稿のインスタンス変数になにか入っている場合、中身を展開 -->
-      <?php //foreach ($posts as $post): ?>
+      @foreach($posts as $post)
         <li class='list'>
           <div class='post-info'>
             <div class='user-page'>
-              <a href="user-page.php?id=<?php //print($post['user_id']); ?>"><?php //print(htmlspecialchars($post['nickname'], ENT_QUOTES)); ?></a>
+              <a href="#">ユーザー名</a>
             </div>
 
             <!-- タイトル -->
             <h3 class='post-title'>
-              <?php //print(htmlspecialchars($post['title'], ENT_QUOTES)); ?>
+              {{ $post->title }}
             </h3>
             <!-- タイトル -->
 
             <!-- ジャンル -->
             <h2 class='post-genre'>
-              ジャンル : <?php //print(htmlspecialchars($post['genre'], ENT_QUOTES)); ?>
+              ジャンル : {{ $post->genre }}
             </h2>
             <!-- ジャンル -->
 
             <!-- ネタバレ -->
-            <?php //if ($post['spoiler'] === 'true'): ?>
+            @if ($post->spoiler == '0')
               <details>
-            <?php //endif; ?>
-              <?php //if ($post['spoiler'] === 'true'): ?>
+            @endif
+              @if ($post->spoiler == '0')
                 <summary role="button" aria-expanded="false" class='netabare'>このレビューはネタバレを含みます</summary>
-              <?php //endif; ?>
+              @endif
               <h3 class='post-content'>
-                <?php //print(htmlspecialchars($post['content'], ENT_QUOTES)); ?>
+                {{ $post->content }}
               </h3>
-            <?php //if ($post['spoiler'] === 'true'): ?>
+            @if ($post->spoiler == '0')
               </details>
-            <?php //endif; ?>
+            @endif
             <!-- ネタバレ -->
             
-            <?php //if (!empty($id) && $post['user_id'] === $id): ?>
-              <a href="edit.php?id=<?php //print($post['id']); ?>" class="btn btn-warning">編集</a>
-              <a href="delete.php?id=<?php //print($post['id']); ?>" class="btn btn-danger">削除</a>
-            <?php //endif; ?>
+
+              <a href="#" class="btn btn-warning">編集</a>
+              <a href="#" class="btn btn-danger">削除</a>
+
           </div>
         </li>
-      <?php //endforeach; ?>
+      @endforeach
     <!-- 投稿のインスタンス変数になにか入っている場合、中身を展開 -->
 
     <!-- 投稿がない場合のダミー -->
-    <?php //if ($cnt['cnt'] === '0'): ?>
+    @if ($post == '')
       <div class='post-dummy'>
         <h3 class='dummy-title'>
           まだ投稿はありません
         </h3>
       </div>
-    <?php //endif; ?>
+    @endif
     <!-- 投稿がない場合のダミー -->
   </ul>
-
-  <!-- <div class="paging">
-    <a href="#" class="paging-left">前へ</a>
-    <a href="#" class="paging-right">次へ</a>
-  </div> -->
 
 </div>
 

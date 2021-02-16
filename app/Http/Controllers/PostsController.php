@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Post;
+use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
@@ -17,7 +18,12 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        $posts = DB::table('posts')
+        ->select('title', 'genre', 'spoiler', 'content', 'user_id')
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+        return view('post.index', compact('posts'));
     }
 
     /**

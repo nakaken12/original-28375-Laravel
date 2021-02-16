@@ -11,13 +11,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', 'PostsController@index')->name('post.index');
 
-Route::get('/', function () {
-    return view('post.index');
-});
+Route::get('post/index', 'PostsController@index')->name('post.index');
 
 Route::group(['prefix' => 'post', 'middleware' => 'auth'], function(){
     Route::get('create', 'PostsController@create')->name('post.create');
