@@ -34,14 +34,14 @@
     <?php //endif; ?>
     <!-- エラー文 -->
 
-    <form action="{{ route('post.store') }}" method="post" class="new_posts">
+    <form action="{{ route('post.update', ['id' => $post->id ]) }}" method="post" class="new_posts">
     @csrf
       <!-- タイトル名 -->
       <div class="weight-bold-text">
         タイトル名
         <span class="indispensable">必須</span>
       </div>
-      <input type="text" name="title" class="title-text" placeholder="タイトル名" maxlength="40" value="<?php //print(htmlspecialchars($_POST['title'], ENT_QUOTES)); ?>">
+      <input type="text" name="title" class="title-text" placeholder="タイトル名" maxlength="40" value="{{ $post->title }}">
       <!-- タイトル名 -->
 
       <!-- ジャンル -->
@@ -53,22 +53,22 @@
           </div>
           <select name="genre" class="select-box">
             <option value="--">--</option>
-            <option value="アニメ">アニメ</option>
-            <option value="アクション">アクション</option>
-            <option value="アドベンチャー">アドベンチャー</option>
-            <option value="SF">SF</option>
-            <option value="キッズ・ファミリー">キッズ・ファミリー</option>
-            <option value="コメディ">コメディ</option>
-            <option value="サスペンス">サスペンス</option>
-            <option value="時代劇">時代劇</option>
-            <option value="青春">青春</option>
-            <option value="戦争">戦争</option>
-            <option value="ドキュメンタリー">ドキュメンタリー</option>
-            <option value="ドラマ">ドラマ</option>
-            <option value="ファンタジー">ファンタジー</option>
-            <option value="ホラー">ホラー</option>
-            <option value="ミュージカル・音楽">ミュージカル・音楽</option>
-            <option value="恋愛">恋愛</option>
+            <option value="アニメ" @if($post->genre === "アニメ") selected @endif>アニメ</option>
+            <option value="アクション" @if($post->genre === "アクション") selected @endif>アクション</option>
+            <option value="アドベンチャー" @if($post->genre === "アドベンチャー") selected @endif>アドベンチャー</option>
+            <option value="SF" @if($post->genre === "SF") selected @endif>SF</option>
+            <option value="キッズ・ファミリー" @if($post->genre === "キッズ・ファミリー") selected @endif>キッズ・ファミリー</option>
+            <option value="コメディ" @if($post->genre === "コメディ") selected @endif>コメディ</option>
+            <option value="サスペンス" @if($post->genre === "サスペンス") selected @endif>サスペンス</option>
+            <option value="時代劇" @if($post->genre === "時代劇") selected @endif>時代劇</option>
+            <option value="青春" @if($post->genre === "青春") selected @endif>青春</option>
+            <option value="戦争" @if($post->genre === "戦争") selected @endif>戦争</option>
+            <option value="ドキュメンタリー" @if($post->genre === "ドキュメンタリー") selected @endif>ドキュメンタリー</option>
+            <option value="ドラマ" @if($post->genre === "ドラマ") selected @endif>ドラマ</option>
+            <option value="ファンタジー" @if($post->genre === "ファンタジー") selected @endif>ファンタジー</option>
+            <option value="ホラー" @if($post->genre === "ホラー") selected @endif>ホラー</option>
+            <option value="ミュージカル・音楽" @if($post->genre === "ミュージカル・音楽") selected @endif>ミュージカル・音楽</option>
+            <option value="恋愛" @if($post->genre === "恋愛") selected @endif>恋愛</option>
           </select>
         </div>
       </div>
@@ -83,8 +83,8 @@
           ネタバレ
           <span class="indispensable">必須</span>
         </div>
-        <input type="radio" name="spoiler" value="0">ネタバレあり
-        <input type="radio" name="spoiler" value="1">ネタバレなし
+        <input type="radio" name="spoiler" value="0" @if($post->spoiler === 0) checked @endif>ネタバレあり
+        <input type="radio" name="spoiler" value="1" @if($post->spoiler === 1) checked @endif>ネタバレなし
       </div>    
       <!-- ネタバレ -->
 
@@ -94,7 +94,7 @@
           鑑賞記録
           <span class="indispensable">必須</span>
         </div>
-        <textarea name="content" cols="30" rows="10" class="posts-text" placeholder="レビューを入力してください"><?php //print(htmlspecialchars($_POST['content'], ENT_QUOTES)); ?></textarea>
+        <textarea name="content" cols="30" rows="10" class="posts-text" placeholder="レビューを入力してください">{{ $post->content }}</textarea>
       </div>
       <!-- レビュー -->
 

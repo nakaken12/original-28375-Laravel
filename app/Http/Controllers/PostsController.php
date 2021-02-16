@@ -19,7 +19,7 @@ class PostsController extends Controller
     public function index()
     {
         $posts = DB::table('posts')
-        ->select('title', 'genre', 'spoiler', 'content', 'user_id')
+        ->select('id', 'title', 'genre', 'spoiler', 'content', 'user_id')
         ->orderBy('created_at', 'desc')
         ->get();
 
@@ -78,6 +78,9 @@ class PostsController extends Controller
     public function edit($id)
     {
         //
+        $post = Post::find($id);
+
+        return view('post.edit', compact('post'));
     }
 
     /**
@@ -90,6 +93,18 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $post = Post::find($id);
+
+        $post->title = $request->input('title');
+        $post->genre = $request->input('genre');
+        $post->spoiler = $request->input('spoiler');
+        $post->content = $request->input('content');
+        $post->user_id = Auth::id();
+
+        $post->save();
+
+        return redirect('/');
+
     }
 
     /**

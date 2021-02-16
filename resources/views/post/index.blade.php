@@ -82,7 +82,7 @@
             <!-- ネタバレ -->
             
 
-              <a href="#" class="btn btn-warning">編集</a>
+              <a href="{{ route('post.edit', ['id' => $post->id ])}}" class="btn btn-warning">編集</a>
               <a href="#" class="btn btn-danger">削除</a>
 
           </div>
