@@ -88,11 +88,13 @@ use App\User;
             <!-- ネタバレ -->
             
             <div class="edit-delete-btn">
-              <a href="{{ route('post.edit', ['id' => $post->id ])}}" class="edit-btn btn btn-warning">編集</a>
-              <form method="post" action="{{ route('post.destroy', ['id' => $post->id ])}}" id="delete_{{ $post->id }}">
-                @csrf
-                <a href="#" class="btn btn-danger" data-id="{{ $post->id }}" onclick="deletePost(this);">削除</a>
-              </form>
+              @if (Auth::id() === $post->user_id)
+                <a href="{{ route('post.edit', ['id' => $post->id ])}}" class="edit-btn btn btn-warning">編集</a>
+                <form method="post" action="{{ route('post.destroy', ['id' => $post->id ])}}" id="delete_{{ $post->id }}">
+                  @csrf
+                  <a href="#" class="btn btn-danger" data-id="{{ $post->id }}" onclick="deletePost(this);">削除</a>
+                </form>
+              @endif
             </div>
 
           </div>
