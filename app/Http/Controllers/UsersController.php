@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Auth;
+use App\User;
 
 use App\Models\Post;
 
 use Illuminate\Support\Facades\DB;
 
-class PostsController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,12 +19,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = DB::table('posts')
-        ->select('id', 'title', 'genre', 'spoiler', 'content', 'user_id')
-        ->orderBy('created_at', 'desc')
-        ->get();
-
-        return view('post.index', compact('posts'));
+        //
     }
 
     /**
@@ -35,7 +30,6 @@ class PostsController extends Controller
     public function create()
     {
         //
-        return view('post.post');
     }
 
     /**
@@ -46,17 +40,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        $post = new Post;
-
-        $post->title = $request->input('title');
-        $post->genre = $request->input('genre');
-        $post->spoiler = $request->input('spoiler');
-        $post->content = $request->input('content');
-        $post->user_id = Auth::id();
-
-        $post->save();
-
-        return redirect('/');
+        //
     }
 
     /**
@@ -65,9 +49,24 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
         //
+        $user = User::find($user->id); 
+    
+        $posts = DB::table('posts')
+        ->where('user_id', $user->id)
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+        $cnt = count($posts);
+
+        return view('users.show', [
+            'user_name' => $user->name, 
+            'posts' => $posts,
+            'cnt' => $cnt,
+        ]);
+
     }
 
     /**
@@ -79,9 +78,6 @@ class PostsController extends Controller
     public function edit($id)
     {
         //
-        $post = Post::find($id);
-
-        return view('post.edit', compact('post'));
     }
 
     /**
@@ -94,18 +90,6 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $post = Post::find($id);
-
-        $post->title = $request->input('title');
-        $post->genre = $request->input('genre');
-        $post->spoiler = $request->input('spoiler');
-        $post->content = $request->input('content');
-        $post->user_id = Auth::id();
-
-        $post->save();
-
-        return redirect('/');
-
     }
 
     /**
@@ -117,10 +101,5 @@ class PostsController extends Controller
     public function destroy($id)
     {
         //
-        $post = Post::find($id);
-        $post->delete();
-
-        return redirect('/');
-
     }
 }

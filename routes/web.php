@@ -23,6 +23,8 @@ Route::group(['prefix' => 'post', 'middleware' => 'auth'], function(){
     Route::post('destroy/{id}', 'PostsController@destroy')->name('post.destroy');
 });
 
+Route::resource('/users', 'UsersController', ['only' => ['show']]);
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
