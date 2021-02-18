@@ -111,7 +111,7 @@ use App\User;
     <!-- 投稿のインスタンス変数になにか入っている場合、中身を展開 -->
 
     <!-- 投稿がない場合のダミー -->
-    @if ($posts == '')
+    @if ($cnt == 0)
       <div class='post-dummy'>
         <h3 class='dummy-title'>
           まだ投稿はありません

@@ -24,7 +24,9 @@ class PostsController extends Controller
         ->orderBy('created_at', 'desc')
         ->get();
 
-        return view('post.index', compact('posts'));
+        $cnt = count($posts);
+
+        return view('post.index', compact('posts', 'cnt'));
     }
 
     /**
