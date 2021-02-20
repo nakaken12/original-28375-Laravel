@@ -20,18 +20,15 @@
     <h2 class="posts-sell-title">投稿の編集</h2>
 
     <!-- エラー文 -->
-    <?php //if ($error['title'] === 'blank'): ?>
-      <!-- <p class="error">・タイトル名を入力してください</p> -->
-    <?php //endif; ?>
-    <?php //if ($error['genre'] === 'blank'): ?>
-      <!-- <p class="error">・「--」以外を選択してください</p> -->
-    <?php //endif; ?>
-    <?php //if ($error['spoiler'] === 'blank'): ?>
-      <!-- <p class="error">・ネタバレの有無を選択してださい</p> -->
-    <?php //endif; ?>
-    <?php //if ($error['content'] === 'blank'): ?>
-      <!-- <p class="error">・レビューを入力してください</p> -->
-    <?php //endif; ?>
+    @if ($errors->any())
+    <div class="error">
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+    @endif
     <!-- エラー文 -->
 
     <form action="{{ route('post.update', ['id' => $post->id ]) }}" method="post" class="new_posts">

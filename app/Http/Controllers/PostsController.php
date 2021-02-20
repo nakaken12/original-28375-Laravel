@@ -10,6 +10,8 @@ use App\Models\Post;
 
 use Illuminate\Support\Facades\DB;
 
+use App\Http\Requests\StorePosts;
+
 class PostsController extends Controller
 {
     /**
@@ -46,7 +48,7 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePosts $request)
     {
         $post = new Post;
 
@@ -93,7 +95,7 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StorePosts $request, $id)
     {
         //
         $post = Post::find($id);

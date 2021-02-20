@@ -20,18 +20,15 @@
     <h2 class="posts-sell-title">新規投稿</h2>
 
     <!-- エラー文 -->
-    <?php //if ($error['title'] === 'blank'): ?>
-      <!-- <p class="error">・タイトル名を入力してください</p> -->
-    <?php //endif; ?>
-    <?php //if ($error['genre'] === 'blank'): ?>
-      <!-- <p class="error">・「--」以外を選択してください</p> -->
-    <?php //endif; ?>
-    <?php //if ($error['spoiler'] === 'blank'): ?>
-      <!-- <p class="error">・ネタバレの有無を選択してださい</p> -->
-    <?php //endif; ?>
-    <?php //if ($error['content'] === 'blank'): ?>
-      <!-- <p class="error">・レビューを入力してください</p> -->
-    <?php //endif; ?>
+    @if ($errors->any())
+    <div class="error">
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+    @endif
     <!-- エラー文 -->
 
     <form action="{{ route('post.store') }}" method="post" class="new_posts">
@@ -41,7 +38,7 @@
         タイトル名
         <span class="indispensable">必須</span>
       </div>
-      <input type="text" name="title" class="title-text" placeholder="タイトル名" maxlength="40" value="<?php //print(htmlspecialchars($_POST['title'], ENT_QUOTES)); ?>">
+      <input type="text" name="title" class="title-text" placeholder="タイトル名" maxlength="40" value="{{ old('title') }}">
       <!-- タイトル名 -->
 
       <!-- ジャンル -->
@@ -52,7 +49,7 @@
             <span class="indispensable">必須</span>
           </div>
           <select name="genre" class="select-box">
-            <option value="--">--</option>
+            <option value="">--</option>
             <option value="アニメ">アニメ</option>
             <option value="アクション">アクション</option>
             <option value="アドベンチャー">アドベンチャー</option>
@@ -94,7 +91,7 @@
           鑑賞記録
           <span class="indispensable">必須</span>
         </div>
-        <textarea name="content" cols="30" rows="10" class="posts-text" placeholder="レビューを入力してください"><?php //print(htmlspecialchars($_POST['content'], ENT_QUOTES)); ?></textarea>
+        <textarea name="content" cols="30" rows="10" class="posts-text" placeholder="レビューを入力してください">{{ old('content') }}</textarea>
       </div>
       <!-- レビュー -->
 
