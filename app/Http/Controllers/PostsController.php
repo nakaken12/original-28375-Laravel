@@ -24,7 +24,7 @@ class PostsController extends Controller
         $posts = DB::table('posts')
         ->select('id', 'title', 'genre', 'spoiler', 'content', 'user_id')
         ->orderBy('created_at', 'desc')
-        ->paginate(20);
+        ->paginate(10);
 
         $cnt = count($posts);
 
