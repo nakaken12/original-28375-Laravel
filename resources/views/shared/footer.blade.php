@@ -18,21 +18,9 @@
     <p class='footer-contents-explain'>
       さあ、はじめよう。
     </p>
-    <div>
-      <ul class='user-management'>
-        @if (Route::has('login'))
-            @auth
-                <a href="{{ url('/home') }}" class="user-nickname">{{ Auth::user()->name }}</a>
-            @else
-                <a href="{{ route('login') }}" class="login btn btn-primary">ログイン</a>
-
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="sign-up btn btn-success">新規登録</a>
-                @endif
-            @endauth
-        @endif
-      </ul>
-    </div>
+    <p class='footer-contents-explain'>
+      {{ $posts->links() }}
+    </p>
   <?php endif; ?>
 </div>
 <!-- 広告部分 -->
