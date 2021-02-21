@@ -103,8 +103,6 @@
     </form>
   </div>
 </div>
-
-@include('shared.footer')
   
 </body>
 </html>

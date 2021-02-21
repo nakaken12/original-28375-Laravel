@@ -140,4 +140,229 @@ class PostsController extends Controller
         return redirect('/');
 
     }
+
+    public function anime(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = Post::query();
+
+        $query->where('genre', "アニメ");
+        $posts = $query->orderBy('created_at', 'desc')->paginate(10);
+
+        $cnt = count($posts);
+
+        return view('post.index', compact('posts', 'cnt', 'search'));
+    }
+
+    public function action(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = Post::query();
+
+        $query->where('genre', "アクション");
+        $posts = $query->orderBy('created_at', 'desc')->paginate(10);
+
+        $cnt = count($posts);
+
+        return view('post.index', compact('posts', 'cnt', 'search'));
+    }
+
+    public function adventure(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = Post::query();
+
+        $query->where('genre', "アドベンチャー");
+        $posts = $query->orderBy('created_at', 'desc')->paginate(10);
+
+        $cnt = count($posts);
+
+        return view('post.index', compact('posts', 'cnt', 'search'));
+    }
+
+    public function sf(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = Post::query();
+
+        $query->where('genre', "SF");
+        $posts = $query->orderBy('created_at', 'desc')->paginate(10);
+
+        $cnt = count($posts);
+
+        return view('post.index', compact('posts', 'cnt', 'search'));
+    }
+
+    public function kids(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = Post::query();
+
+        $query->where('genre', "キッズ・ファミリー");
+        $posts = $query->orderBy('created_at', 'desc')->paginate(10);
+
+        $cnt = count($posts);
+
+        return view('post.index', compact('posts', 'cnt', 'search'));
+    }
+
+    public function comedy(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = Post::query();
+
+        $query->where('genre', "コメディ");
+        $posts = $query->orderBy('created_at', 'desc')->paginate(10);
+
+        $cnt = count($posts);
+
+        return view('post.index', compact('posts', 'cnt', 'search'));
+    }
+
+    public function suspense(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = Post::query();
+
+        $query->where('genre', "サスペンス");
+        $posts = $query->orderBy('created_at', 'desc')->paginate(10);
+
+        $cnt = count($posts);
+
+        return view('post.index', compact('posts', 'cnt', 'search'));
+    }
+
+    public function historical(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = Post::query();
+
+        $query->where('genre', "時代劇");
+        $posts = $query->orderBy('created_at', 'desc')->paginate(10);
+
+        $cnt = count($posts);
+
+        return view('post.index', compact('posts', 'cnt', 'search'));
+    }
+
+    public function youth(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = Post::query();
+
+        $query->where('genre', "青春");
+        $posts = $query->orderBy('created_at', 'desc')->paginate(10);
+
+        $cnt = count($posts);
+
+        return view('post.index', compact('posts', 'cnt', 'search'));
+    }
+
+    public function war(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = Post::query();
+
+        $query->where('genre', "戦争");
+        $posts = $query->orderBy('created_at', 'desc')->paginate(10);
+
+        $cnt = count($posts);
+
+        return view('post.index', compact('posts', 'cnt', 'search'));
+    }
+
+    public function documentary(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = Post::query();
+
+        $query->where('genre', "ドキュメンタリー");
+        $posts = $query->orderBy('created_at', 'desc')->paginate(10);
+
+        $cnt = count($posts);
+
+        return view('post.index', compact('posts', 'cnt', 'search'));
+    }
+
+    public function drama(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = Post::query();
+
+        $query->where('genre', "ドラマ");
+        $posts = $query->orderBy('created_at', 'desc')->paginate(10);
+
+        $cnt = count($posts);
+
+        return view('post.index', compact('posts', 'cnt', 'search'));
+    }
+
+    public function fantasy(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = Post::query();
+
+        $query->where('genre', "ファンタジー");
+        $posts = $query->orderBy('created_at', 'desc')->paginate(10);
+
+        $cnt = count($posts);
+
+        return view('post.index', compact('posts', 'cnt', 'search'));
+    }
+
+    public function horror(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = Post::query();
+
+        $query->where('genre', "ホラー");
+        $posts = $query->orderBy('created_at', 'desc')->paginate(10);
+
+        $cnt = count($posts);
+
+        return view('post.index', compact('posts', 'cnt', 'search'));
+    }
+
+    public function musical(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = Post::query();
+
+        $query->where('genre', "ミュージカル・音楽");
+        $posts = $query->orderBy('created_at', 'desc')->paginate(10);
+
+        $cnt = count($posts);
+
+        return view('post.index', compact('posts', 'cnt', 'search'));
+    }
+
+    public function love(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = Post::query();
+
+        $query->where('genre', "恋愛");
+        $posts = $query->orderBy('created_at', 'desc')->paginate(10);
+
+        $cnt = count($posts);
+
+        return view('post.index', compact('posts', 'cnt', 'search'));
+    }
+
 }
