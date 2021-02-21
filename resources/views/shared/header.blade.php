@@ -62,7 +62,7 @@
   <a href="{{ url('/post/create') }}" class="header-left">投稿する</a>
 
   <form action="{{ route('post.index') }}" method="get" class="search-form">
-    <input type="search" name="search" class="input-box" placeholder="タイトル名から探す">
+    <input type="search" name="search" class="input-box" placeholder="タイトル名から探す" value="{{$search}}">
     <input type="submit" value="検索">
   </form>
 

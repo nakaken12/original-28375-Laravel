@@ -19,8 +19,21 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->input('search');
+
+        if (!empty($search)) {
+            $query = Post::query();
+
+            $query->where('title', 'LIKE', "%{$search}%");
+            $posts = $query->orderBy('created_at', 'desc')->paginate(10);
+
+            $cnt = count($posts);
+
+            return view('post.index', compact('posts', 'cnt', 'search'));
+        }
+
         $posts = DB::table('posts')
         ->select('id', 'title', 'genre', 'spoiler', 'content', 'user_id')
         ->orderBy('created_at', 'desc')
@@ -28,7 +41,7 @@ class PostsController extends Controller
 
         $cnt = count($posts);
 
-        return view('post.index', compact('posts', 'cnt'));
+        return view('post.index', compact('posts', 'cnt', 'search'));
     }
 
     /**
