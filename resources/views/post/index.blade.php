@@ -28,10 +28,6 @@ use App\User;
   <p class='header-service-explain'>
     〜観たい映画がきっと見つかる〜
   </p>
-  <div class='store-btn'>
-    <a href="#"><img src="https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps" alt="App Store" class="apple-btn"></a>
-    <a href="#"><img src="../images/dl-android.png" alt="Google Play" class="google-btn"></a>
-  </div>
 </div>
 <!-- 広告部分 -->
 
